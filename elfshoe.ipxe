@@ -46,27 +46,27 @@ choose --default fedora_43_x86_64 target && goto ${target}
 
 :fedora_43_x86_64
 initrd http://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/x86_64/os/images/pxeboot/initrd.img
-chain http://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/x86_64/os/ || goto fedora_menu_error
+chain http://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/x86_64/os/ inst.webui inst.webui.remote || goto fedora_menu_error
 
 :fedora_43_arm64
 initrd http://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/aarch64/os/images/pxeboot/initrd.img
-chain http://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/aarch64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/aarch64/os/ || goto fedora_menu_error
+chain http://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/aarch64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/43/Server/aarch64/os/ inst.webui inst.webui.remote || goto fedora_menu_error
 
 :fedora_42_x86_64
 initrd http://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/os/images/pxeboot/initrd.img
-chain http://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/os/ || goto fedora_menu_error
+chain http://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/x86_64/os/ inst.webui inst.webui.remote || goto fedora_menu_error
 
 :fedora_42_arm64
 initrd http://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/aarch64/os/images/pxeboot/initrd.img
-chain http://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/aarch64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/aarch64/os/ || goto fedora_menu_error
+chain http://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/aarch64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/42/Server/aarch64/os/ inst.webui inst.webui.remote || goto fedora_menu_error
 
 :fedora_41_x86_64
 initrd http://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/x86_64/os/images/pxeboot/initrd.img
-chain http://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/x86_64/os/ || goto fedora_menu_error
+chain http://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/x86_64/os/ inst.webui inst.webui.remote || goto fedora_menu_error
 
 :fedora_41_arm64
 initrd http://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/aarch64/os/images/pxeboot/initrd.img
-chain http://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/aarch64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/aarch64/os/ || goto fedora_menu_error
+chain http://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/aarch64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/41/Server/aarch64/os/ inst.webui inst.webui.remote || goto fedora_menu_error
 :fedora_menu_error
 echo
 echo Boot failed! Press any key to return to menu...
