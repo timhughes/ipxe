@@ -36,4 +36,4 @@ dependencies = [
 [tool.hatch.envs.docs.scripts]
 build = "mkdocs build"
 serve = "mkdocs serve"
-generate = "elfshoe -c config.yaml -o docs/elfshoe.ipxe"
+generate = "elfshoe -c config.yaml -o docs/elfshoe.ipxe --no-validate"
