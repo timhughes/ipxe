@@ -25,7 +25,7 @@ distributions:
     metadata_filter:
       variant: "Server"  # Only Server variant (other options: Workstation, Cloud, etc.)
       architectures: [x86_64, aarch64]  # Fetch these architectures from metadata
-      latest: 3  # Only show 3 most recent versions
+      latest: 2  # Only show 2 most recent versions (42 and 43)
 
     # Architecture name mapping: iPXE uses different names than distributions
     arch_map:

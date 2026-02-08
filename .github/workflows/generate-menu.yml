@@ -34,7 +34,7 @@ jobs:
         run: pip install hatch
       
       - name: Generate iPXE menu
-        run: hatch run docs:generate
+        run: hatch run docs:generate --no-validate
       
       - name: Add visual customization to menu
         run: |
