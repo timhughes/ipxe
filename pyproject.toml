@@ -5,35 +5,9 @@ build-backend = "hatchling.build"
 [project]
 name = "ipxe"
 version = "0.1.0"
-description = "iPXE Network Boot Menu - automated boot menu generation and hosting"
+description = "Automated iPXE network boot menu"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
     "elfshoe",
 ]
-
-[project.optional-dependencies]
-docs = [
-    "mkdocs>=1.5.0",
-    "mkdocs-material>=9.0.0",
-]
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/ipxe"]
-
-[tool.hatch.envs.default]
-dependencies = [
-    "elfshoe",
-]
-
-[tool.hatch.envs.docs]
-dependencies = [
-    "elfshoe",
-    "mkdocs>=1.5.0",
-    "mkdocs-material>=9.0.0",
-]
-
-[tool.hatch.envs.docs.scripts]
-build = "mkdocs build"
-serve = "mkdocs serve"
-generate = "elfshoe -c config.yaml -o docs/elfshoe.ipxe --no-validate"

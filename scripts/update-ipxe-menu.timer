@@ -1,0 +1,11 @@
+[Unit]
+Description=Update iPXE menu every 5 minutes
+Requires=update-ipxe-menu.service
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

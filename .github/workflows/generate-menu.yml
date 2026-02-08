@@ -1,4 +1,4 @@
-name: Generate iPXE Menu and Deploy
+name: Generate iPXE Menu
 
 on:
   push:
@@ -16,38 +16,35 @@ permissions:
   contents: write
 
 jobs:
-  generate-and-deploy:
+  generate-menu:
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       
-      - name: Install hatch
-        run: pip install hatch
+      - name: Install elfshoe
+        run: pip install elfshoe
       
       - name: Generate iPXE menu
-        run: hatch run docs:generate --no-validate
+        run: elfshoe -c config.yaml -o elfshoe.ipxe --no-validate
       
       - name: Add visual customization to menu
         run: |
           # Insert custom iPXE commands after dhcp line
-          # This adds visual customization before the menu displays
           awk '
           /^dhcp$/ {
               print
               print ""
               print "# Visual customization"
-              print "# Background image"
-              print "imgfetch https://timhughes.github.io/ipxe/images/background.png || echo Failed to fetch background"
-              print "imgdraw background.png || echo Failed to draw background"
+              print "# Background image (requires iPXE built with IMAGE_PNG support)"
+              print "# imgfetch https://raw.githubusercontent.com/timhughes/ipxe/main/images/background.png || echo Failed to fetch background"
+              print "# imgdraw background.png || echo Failed to draw background"
               print ""
               print "# Customize colors (optional - uncomment to enable):"
               print "# cpair --foreground 0x00cc00 --background 0x000000 0  # Green on black"
@@ -59,31 +56,19 @@ jobs:
               next
           }
           { print }
-          ' docs/elfshoe.ipxe > docs/elfshoe.ipxe.tmp
-          mv docs/elfshoe.ipxe.tmp docs/elfshoe.ipxe
-      
-      - name: Build MkDocs site
-        run: hatch run docs:build
+          ' elfshoe.ipxe > elfshoe.ipxe.tmp
+          mv elfshoe.ipxe.tmp elfshoe.ipxe
       
       - name: Check for changes
         id: git-check
         run: |
-          git diff --exit-code docs/elfshoe.ipxe || echo "changed=true" >> $GITHUB_OUTPUT
+          git diff --exit-code elfshoe.ipxe || echo "changed=true" >> $GITHUB_OUTPUT
       
       - name: Commit and push changes
         if: steps.git-check.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add docs/elfshoe.ipxe
+          git add elfshoe.ipxe
           git commit -m "chore: update iPXE menu [automated]"
           git push
-      
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'docs: deploy site [automated]'

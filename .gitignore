@@ -8,9 +8,6 @@ __pycache__/
 dist/
 build/
 
-# MkDocs
-site/
-
 # IDEs
 .vscode/
 .idea/
