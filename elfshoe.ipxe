@@ -1,17 +1,33 @@
 #!ipxe
 dhcp
 
+# Visual customization
+# Background image (requires iPXE built with IMAGE_PNG support)
+# imgfetch https://raw.githubusercontent.com/timhughes/ipxe/main/images/background.png || echo Failed to fetch background
+# imgdraw background.png || echo Failed to draw background
+
+# Customize colors (optional - uncomment to enable):
+# cpair --foreground 0x00cc00 --background 0x000000 0  # Green on black
+# cpair --foreground 0xffffff --background 0x0066cc 1  # White on blue (selected)
+# cpair --foreground 0xcccccc --background 0x000000 2  # Gray on black (normal text)
+
+# Set console resolution (optional - uncomment to enable):
+# console --x 1024 --y 768
+
 :start
 menu Network Boot Menu
 item --gap -- Operating Systems:
 item fedora_menu Fedora
 item debian_menu Debian
 item --gap -- Other Options:
+item local Boot from Local Disk
 item netboot netboot.xyz
+item memtest Memtest86+ (Memory Test)
+item reboot Reboot System
 item --gap -- Advanced:
 item shell iPXE Shell
 item exit Exit to BIOS
-choose --default fedora_menu --timeout 30000 target && goto ${target}
+choose --default local --timeout 30000 target && goto ${target}
 
 
 :fedora_menu
@@ -99,7 +115,13 @@ goto start
 
 
 
+:local
+
 :netbootchain --autofree http://boot.netboot.xyz || goto chain_error
+
+:memtestchain --autofree https://boot.netboot.xyz/ipxe/memtest.ipxe || goto chain_error
+
+:reboot
 
 :shellshell
 
