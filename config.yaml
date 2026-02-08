@@ -39,7 +39,7 @@ distributions:
       kernel: "images/pxeboot/vmlinuz"
       initrd: "images/pxeboot/initrd.img"
 
-    boot_params: "inst.repo={base_url}/"
+    boot_params: "inst.repo={base_url}/ inst.webui inst.webui.remote"
 
   # Example 2: Static distribution without architecture mapping
   # CentOS versions are specified manually

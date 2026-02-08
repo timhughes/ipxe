@@ -150,8 +150,11 @@ Edit `config.yaml` to customize the boot menu. Changes trigger automatic regener
 
 The menu includes:
 
-- **Fedora Server** - Latest 2 versions (x86_64, ARM64)
+- **Fedora Server** - Latest 2 versions (x86_64, ARM64) with WebUI installer enabled
 - **Debian** - Bookworm (12) and Trixie (13) (x86_64, ARM64)
+
+!!! note "Fedora WebUI Installer"
+    Fedora installations use the modern **Anaconda WebUI** installer. After PXE booting, watch the console for a URL like `http://192.168.1.100:9090`, then open it in your browser on any device to complete the installation via a modern web interface.
 
 ### Boot Options
 

@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-GITHUB_RAW_URL="https://raw.githubusercontent.com/timhughes/ipxe/main/docs/elfshoe.ipxe"
+GITHUB_RAW_URL="https://raw.githubusercontent.com/timhughes/ipxe/main/elfshoe.ipxe"
 TFTPBOOT_DIR="/tftpboot"
 TEMP_FILE="/tmp/elfshoe.ipxe.new"
 TARGET_FILE="${TFTPBOOT_DIR}/elfshoe.ipxe"
