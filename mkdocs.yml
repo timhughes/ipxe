@@ -1,0 +1,43 @@
+site_name: iPXE Network Boot Menu
+site_description: Network boot menu powered by elfshoe
+site_url: https://timhughes.github.io/ipxe/
+repo_url: https://github.com/timhughes/ipxe
+repo_name: timhughes/ipxe
+
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: indigo
+    accent: indigo
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Setup Guide: setup.md
+  - Customization: customization.md
+  - Download: elfshoe.ipxe
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.keys
+  - admonition
+  - pymdownx.details
+  - attr_list
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/timhughes/ipxe
